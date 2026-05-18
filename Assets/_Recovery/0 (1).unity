@@ -7055,56 +7055,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RanuraSilueta
   tipoQueAcepta: 2
   ocupada: 0
---- !u!1 &945953092
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 945953094}
-  - component: {fileID: 945953093}
-  m_Layer: 0
-  m_Name: ProgressTracker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &945953093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945953092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8c1663f26c2db44ab5289d5343c7baa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProgressTracker
-  onPuzzleSolvedUnityEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onAllPuzzlesSolvedUnityEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &945953094
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 945953092}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.47044, y: 0, z: -0.83812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &986495367
 GameObject:
   m_ObjectHideFlags: 0
@@ -17766,65 +17716,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!1 &1478764638
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1478764640}
-  - component: {fileID: 1478764639}
-  m_Layer: 0
-  m_Name: HintSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1478764639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478764638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e632073e47ed0b44a34f296089116ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HintSystem
-  hintDelay: 300
-  cooldownBetweenHints: 60
-  puzzleAnchor_Espejo: {fileID: 0}
-  puzzleAnchor_Velas: {fileID: 0}
-  puzzleAnchor_Diario: {fileID: 0}
-  puzzleAnchor_Silueta: {fileID: 0}
-  hintClip_Espejo: {fileID: 0}
-  hintClip_Velas: {fileID: 0}
-  hintClip_Diario: {fileID: 0}
-  hintClip_Silueta: {fileID: 0}
-  progressTracker: {fileID: 0}
-  audioManager: {fileID: 0}
-  hintVolume: 0.8
-  spatialBlend: 1
-  maxDistance: 12
---- !u!4 &1478764640
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1478764638}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.47044, y: 0, z: -0.83812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1518695380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24504,5 +24395,3 @@ SceneRoots:
   - {fileID: 1417054291}
   - {fileID: 1210376186}
   - {fileID: 1518695380}
-  - {fileID: 945953094}
-  - {fileID: 1478764640}
