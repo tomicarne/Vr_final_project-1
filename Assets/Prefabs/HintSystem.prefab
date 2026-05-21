@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5749388282668815135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2350490677146590101}
+  - component: {fileID: 4866338697261877830}
+  m_Layer: 0
+  m_Name: HintSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2350490677146590101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749388282668815135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.47044, y: 0, z: -0.83812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4866338697261877830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749388282668815135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e632073e47ed0b44a34f296089116ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HintSystem
+  hintDelay: 300
+  cooldownBetweenHints: 60
+  puzzleAnchor_Espejo: {fileID: 0}
+  puzzleAnchor_Velas: {fileID: 0}
+  puzzleAnchor_Diario: {fileID: 0}
+  puzzleAnchor_Silueta: {fileID: 0}
+  hintClip_Espejo: {fileID: 0}
+  hintClip_Velas: {fileID: 0}
+  hintClip_Diario: {fileID: 0}
+  hintClip_Silueta: {fileID: 0}
+  progressTracker: {fileID: 0}
+  audioManager: {fileID: 0}
+  hintVolume: 0.8
+  spatialBlend: 1
+  maxDistance: 12
