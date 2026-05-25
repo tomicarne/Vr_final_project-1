@@ -1,17 +1,8 @@
 using UnityEngine;
 
-/// <summary>
-/// AudioManager — Caránimas VR
-/// FRAGMENTO: interfaz mínima que necesita HintSystem.
-/// 
-/// Este archivo es una guía de referencia — NO editar ni poner en escena.
-/// La implementación real está en AudioManager.cs.
-/// </summary>
-// ReSharper disable once UnusedType.Global
-internal class AudioManager_Reference : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    // ─── Pool de AudioSources para audio espacial ─────────────────────────────
-    // Usar un pool evita crear/destruir GameObjects en runtime (importante en Quest 3).
+    public static AudioManager Instance { get; private set; }
 
     [Header("Pool de fuentes de audio espacial")]
     [Tooltip("Mínimo 2 — uno para hints, uno libre para efectos simultáneos.")]
@@ -22,6 +13,8 @@ internal class AudioManager_Reference : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
         BuildPool();
     }
 
@@ -41,14 +34,9 @@ internal class AudioManager_Reference : MonoBehaviour
         }
     }
 
-    // ─── API que HintSystem llama ─────────────────────────────────────────────
-
     /// <summary>
-    /// Reproduce un AudioClip en una posición del mundo (audio 3D).
+    /// Reproduce un AudioClip en una posición del mundo con audio 3D.
     /// HintSystem lo llama con la posición del puzzle activo.
-    /// 
-    /// Uso desde HintSystem:
-    ///     audioManager.PlaySpatialHint(puzzleAnchor.position, shadowClip, 0.8f);
     /// </summary>
     public void PlaySpatialHint(Vector3 worldPosition, AudioClip clip, float volume = 0.8f)
     {
@@ -58,18 +46,15 @@ internal class AudioManager_Reference : MonoBehaviour
             return;
         }
 
-        AudioSource src          = GetNextPooledSource();
-        src.transform.position   = worldPosition;
-        src.clip                 = clip;
-        src.volume               = volume;
+        AudioSource src        = GetNextPooledSource();
+        src.transform.position = worldPosition;
+        src.clip               = clip;
+        src.volume             = volume;
         src.Play();
     }
 
-    // ─── Helpers internos ─────────────────────────────────────────────────────
-
     private AudioSource GetNextPooledSource()
     {
-        // Round-robin: si la fuente actual está reproduciendo, pasa a la siguiente
         for (int i = 0; i < spatialPoolSize; i++)
         {
             int idx = (_poolIndex + i) % spatialPoolSize;
@@ -86,8 +71,4 @@ internal class AudioManager_Reference : MonoBehaviour
         _poolIndex = (_poolIndex + 1) % spatialPoolSize;
         return fallback;
     }
-
-    // ─── Otros métodos del AudioManager van aquí ─────────────────────────────
-    // (música de ambiente, SFX de candados, audio de velas, etc.)
-    // HintSystem solo necesita PlaySpatialHint — el resto es independiente.
 }

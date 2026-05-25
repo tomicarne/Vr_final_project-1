@@ -61,6 +61,10 @@ public class HintSystem : MonoBehaviour
     [SerializeField] private float spatialBlend  = 1f;    // 1 = audio 3D puro
     [SerializeField] private float maxDistance   = 12f;   // cubre la habitación 5×5
 
+    // ─── Singleton ────────────────────────────────────────────────────────────
+
+    public static HintSystem Instance { get; private set; }
+
     // ─── Estado interno ───────────────────────────────────────────────────────
 
     private float   _inactivityTimer   = 0f;
@@ -75,6 +79,9 @@ public class HintSystem : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+
         // Crear AudioSource local como fallback
         _localSource                  = gameObject.AddComponent<AudioSource>();
         _localSource.playOnAwake      = false;
