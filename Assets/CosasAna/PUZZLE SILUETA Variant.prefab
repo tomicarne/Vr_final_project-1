@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1588908980606563726
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 100.52171
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.36091
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873579118110583822, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073744518215574056, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
+      propertyPath: m_Name
+      value: PUZZLE SILUETA Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e925bdad4b68ff4fb6910d520cd38aa, type: 3}
