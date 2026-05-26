@@ -77,9 +77,13 @@ public class Padlock : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         // Caída física al suelo
+        transform.SetParent(null);
         if (_rb != null) _rb.isKinematic = false;
 
         OnCandadoAbierto?.Invoke(this);
+
+        yield return new WaitForSeconds(1.5f);
+        gameObject.SetActive(false);
     }
 
 #if UNITY_EDITOR

@@ -18,6 +18,10 @@ public class PadlockSystem : MonoBehaviour
     public Light luzUmbral;
     public float intensidadLuzFinal = 3f;
 
+    [Header("Cadena")]
+    [Tooltip("El GameObject de la cadena en la puerta. Desaparece al abrir el último candado.")]
+    public GameObject cadena;
+
     [Header("Audio final")]
     [Tooltip("La voz que se escucha al abrirse la puerta.")]
     public AudioClip vozFinal;
@@ -56,6 +60,9 @@ public class PadlockSystem : MonoBehaviour
     private IEnumerator SecuenciaFinal()
     {
         yield return new WaitForSeconds(1f);
+
+        // La cadena desaparece al caer el último candado
+        if (cadena != null) cadena.SetActive(false);
 
         // Fade in de la luz fría
         if (luzUmbral != null)
