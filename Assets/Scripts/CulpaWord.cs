@@ -43,4 +43,9 @@ public class CulpaWord : MonoBehaviour
         // Marcar puzzle 1 como resuelto
         ProgressTracker.Instance?.SetPuzzleSolved(PuzzleID.Espejo);
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        OnCulpaSelected();
+    }
 }
