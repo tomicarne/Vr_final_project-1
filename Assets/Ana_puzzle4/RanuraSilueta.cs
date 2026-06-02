@@ -14,9 +14,9 @@ public class RanuraSilueta : MonoBehaviour
         if (ocupada) return;
 
         PiezaSilueta pieza = other.GetComponent<PiezaSilueta>();
-        if (pieza == null) return;
+        if (pieza == null || pieza.estaColocada) return;
 
-        if (pieza.tipoPieza == tipoQueAcepta && !pieza.estaColocada)
+        if (pieza.tipoPieza == tipoQueAcepta)
         {
             ocupada = true;
             pieza.Colocar(this.transform);

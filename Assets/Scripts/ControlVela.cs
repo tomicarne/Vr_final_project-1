@@ -8,43 +8,54 @@ public class ControlVela : MonoBehaviour
     public int numeroVela = 0;
     public GameObject mecha;
 
+    [Header("Estado derretida (solo para la vela del miedo)")]
+    public bool esVelaDelMiedo = false;
+    public GameObject modeloNormal;    // el GameObject del modelo entero
+    public GameObject modeloDerretido; // el GameObject del modelo derretido
+    public GameObject notaLore;
+    public GameObject llave;
+    public GameObject piezaBoca;
+
     public static event Action<ControlVela> OnVelaPrendida;
 
     public void Start()
     {
-        mecha = this.GetComponentInChildren<ParticleSystem>().gameObject;
+        if (mecha == null)
+        {
+            var ps = GetComponentInChildren<ParticleSystem>();
+            if (ps != null) mecha = ps.gameObject;
+        }
     }
 
     public void Prender()
     {
-        if (velaPrendida == true)
-        {
-            Debug.Log("ya estaba prendida");
-        }
-        else
-        {
-            velaPrendida = true;
-            mecha.SetActive(true);
-            OnVelaPrendida?.Invoke(this);
-        }
+        if (velaPrendida) return;
+        velaPrendida = true;
+        mecha.SetActive(true);
+        OnVelaPrendida?.Invoke(this);
     }
 
     public void Apagar()
     {
-        if (velaPrendida == false)
-        {
-            Debug.Log("La vela ya estaba apagada");
-        }
-        else
-        {
-            StartCoroutine(ApagarConEfecto());
-        }
+        if (!velaPrendida) return;
+        StartCoroutine(ApagarConEfecto());
+    }
+
+    public void Derretir()
+    {
+        velaPrendida = false;
+        if (mecha != null) mecha.SetActive(false);
+        if (modeloNormal != null)    modeloNormal.SetActive(false);
+        if (modeloDerretido != null) modeloDerretido.SetActive(true);
+        if (notaLore != null)        notaLore.SetActive(true);
+        if (llave != null)           llave.SetActive(true);
+        if (piezaBoca != null)       piezaBoca.SetActive(true);
     }
 
     private IEnumerator ApagarConEfecto()
     {
-        velaPrendida = false; 
+        velaPrendida = false;
         yield return new WaitForSeconds(2f);
-        mecha.SetActive(false);
+        if (mecha != null) mecha.SetActive(false);
     }
 }
