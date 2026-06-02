@@ -149,9 +149,8 @@ public class HintSystem : MonoBehaviour
 
     private void TriggerHint()
     {
-        PuzzleID activePuzzle = progressTracker != null
-            ? progressTracker.ActivePuzzle
-            : PuzzleID.None;
+        var tracker = progressTracker != null ? progressTracker : ProgressTracker.Instance;
+        PuzzleID activePuzzle = tracker != null ? tracker.ActivePuzzle : PuzzleID.None;
 
         if (activePuzzle == PuzzleID.None)
         {

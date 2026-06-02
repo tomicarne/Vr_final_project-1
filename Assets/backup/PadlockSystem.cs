@@ -22,10 +22,6 @@ public class PadlockSystem : MonoBehaviour
     [Tooltip("El GameObject de la cadena en la puerta. Desaparece al abrir el último candado.")]
     public GameObject cadena;
 
-    [Header("Audio final")]
-    [Tooltip("La voz que se escucha al abrirse la puerta.")]
-    public AudioClip vozFinal;
-    public AudioSource audioFinal;
 
     private int _candadosAbiertos = 0;
 
@@ -58,38 +54,30 @@ public class PadlockSystem : MonoBehaviour
     }
 
     private IEnumerator SecuenciaFinal()
+{
+    yield return new WaitForSeconds(1f);
+
+    if (cadena != null) cadena.SetActive(false);
+
+    // Fade in de la luz fría
+    if (luzUmbral != null)
     {
-        yield return new WaitForSeconds(1f);
-
-        // La cadena desaparece al caer el último candado
-        if (cadena != null) cadena.SetActive(false);
-
-        // Fade in de la luz fría
-        if (luzUmbral != null)
+        luzUmbral.gameObject.SetActive(true);
+         luzUmbral.enabled = true;
+        float elapsed = 0f, duracion = 2f;
+        while (elapsed < duracion)
         {
-            luzUmbral.enabled = true;
-            float elapsed = 0f, duracion = 2f;
-            while (elapsed < duracion)
-            {
-                elapsed += Time.deltaTime;
-                luzUmbral.intensity = Mathf.Lerp(0f, intensidadLuzFinal, elapsed / duracion);
-                yield return null;
-            }
-        }
-
-        yield return new WaitForSeconds(0.5f);
-
-        // Puerta se entreabre
-        if (puerta != null)
-            StartCoroutine(AbrirPuerta());
-
-        // Voz final (con delay para que coincida con la apertura)
-        if (vozFinal != null && audioFinal != null)
-        {
-            yield return new WaitForSeconds(1.5f);
-            audioFinal.PlayOneShot(vozFinal);
+            elapsed += Time.deltaTime;
+            luzUmbral.intensity = Mathf.Lerp(0f, intensidadLuzFinal, elapsed / duracion);
+            yield return null;
         }
     }
+
+    yield return new WaitForSeconds(0.5f);
+
+    if (puerta != null)
+        StartCoroutine(AbrirPuerta());
+}
 
     private IEnumerator AbrirPuerta()
     {

@@ -3,11 +3,16 @@ using UnityEngine;
 public class CulpaWord : MonoBehaviour
 {
     [Header("Referencias")]
-    public MirrorCrack mirrorCrack;   // el script del espejo
-    public KeySpawner  keySpawner;    // el script que spawna la llave
+    public MirrorCrack mirrorCrack;
+    public KeySpawner  keySpawner;
+
+    [Header("Al resolver el puzzle")]
+    public GameObject llave1;
+    public GameObject notaLore;
+    public GameObject piezaOjo;
 
     [Header("Feedback visual (opcional)")]
-    public Renderer wordRenderer;     // el renderer de la palabra
+    public Renderer wordRenderer;
     public Color    selectedColor = Color.red;
 
     private bool _used = false;
@@ -29,5 +34,13 @@ public class CulpaWord : MonoBehaviour
         // Spawna la llave junto a la puerta
         if (keySpawner != null)
             keySpawner.SpawnKey();
+
+        // Activa llave, nota lore y pieza del ojo
+        if (llave1 != null)   llave1.SetActive(true);
+        if (notaLore != null) notaLore.SetActive(true);
+        if (piezaOjo != null) piezaOjo.SetActive(true);
+
+        // Marcar puzzle 1 como resuelto
+        ProgressTracker.Instance?.SetPuzzleSolved(PuzzleID.Espejo);
     }
 }

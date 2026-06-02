@@ -1,4 +1,3 @@
-// PuzzleManager.cs
 using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
@@ -7,6 +6,11 @@ public class PuzzleManager : MonoBehaviour
 
     [Header("Ranuras en orden: 0=M, 1=I, 2=E, 3=D, 4=O")]
     public Ranura[] ranuras = new Ranura[5];
+
+    [Header("Al resolver el puzzle")]
+    public GameObject llave3;
+    public GameObject notaLore;
+    public GameObject piezaMano;
 
     [Header("Estado")]
     public bool puzzleResuelto = false;
@@ -19,17 +23,11 @@ public class PuzzleManager : MonoBehaviour
 
     public void VerificarPuzzle()
     {
-        // Que todas las ranuras tengan un papel
         foreach (Ranura r in ranuras)
         {
-            if (r.LetraActual == null)
-            {
-                // Falta algún papel, no verificar aún
-                return;
-            }
+            if (r.LetraActual == null) return;
         }
 
-        // Verificar que formen "MIEDO"
         bool correcto = true;
         for (int i = 0; i < ranuras.Length; i++)
         {
@@ -43,18 +41,22 @@ public class PuzzleManager : MonoBehaviour
         if (correcto && !puzzleResuelto)
         {
             puzzleResuelto = true;
-            Debug.Log("¡Puzzle resuelto! Las letras forman MIEDO.");
+            Debug.Log("[Diario] ¡MIEDO correcto! Puzzle resuelto.");
             OnPuzzleResuelto();
-        }
-        else if (!correcto)
-        {
-            puzzleResuelto = false;
-            Debug.Log("Orden incorrecto. Sigue intentando...");
         }
     }
 
     private void OnPuzzleResuelto()
     {
-        // TODO: implementar lo que se activa al resolver el puzzle
+        if (llave3 != null)    llave3.SetActive(true);
+        if (notaLore != null)  notaLore.SetActive(true);
+        if (piezaMano != null) piezaMano.SetActive(true);
+
+        ProgressTracker.Instance?.SetPuzzleSolved(PuzzleID.Diario);
     }
+
+    #if UNITY_EDITOR
+[ContextMenu("DEBUG — Simular puzzle resuelto")]
+private void Debug_Resolver() => OnPuzzleResuelto();
+#endif
 }
